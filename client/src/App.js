@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import CardList from './components/CardList'
+import NavBar from './components/NavBar'
 import './App.css';
+
 
 class App extends React.Component {
   constructor(){
@@ -21,6 +24,9 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
+      <div className="header">
+      <NavBar />
+      </div>
       <CardList atheletes={this.state.atheletes}/>
     </div>
   );
