@@ -1,10 +1,9 @@
 import React from 'react';
+import NavBar from './NavBar';
 import ReactDOM from 'react-dom';
-import 'jest-styled-components'
-import App from './App';
 
-it('renders without crashing', () => {
+it('it renders', ()=> {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<NavBar />, div);
   ReactDOM.unmountComponentAtNode(div);
-});
+})

@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import styled from 'styled-components';
+
+import CardList from './components/CardList'
+import NavBar from './components/NavBar'
 import './App.css';
 
-function App() {
+
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      atheletes : []
+    }
+  }
+
+  componentDidMount(){
+    axios.get("http://localhost:5000/api/players")
+    .then(response => {this.setState({atheletes: response.data})})
+    .catch(error => {console.log(error)})
+  }
+
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">
+      <NavBar />
+      </div>
+      <CardList atheletes={this.state.atheletes}/>
     </div>
   );
+}
 }
 
 export default App;
